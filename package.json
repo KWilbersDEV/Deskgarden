@@ -1,0 +1,45 @@
+{
+  "name": "desk-garden",
+  "private": true,
+  "version": "1.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --mode development",
+    "build": "npm run build:prod",
+    "check": "tsc",
+    "build:dev": "tsc && vite build --mode development",
+    "preview:dev": "vite preview --mode development",
+    "build:prod": "tsc && vite build --mode production",
+    "preview:prod": "vite preview --mode production",
+    "tauri": "PATH=\"$HOME/.cargo/bin:$PATH\" tauri",
+    "desktop:dev": "PATH=\"$HOME/.cargo/bin:$PATH\" tauri dev",
+    "desktop:build": "PATH=\"$HOME/.cargo/bin:$PATH\" CI=true tauri build --target universal-apple-darwin",
+    "desktop:pkg": "sh packaging/macos/build-pkg.sh",
+    "desktop:release": "npm run desktop:build && npm run desktop:pkg",
+    "desktop:icons": "tauri icon packaging/app-icon.svg -o src-tauri/icons && cd src-tauri/icons && rm -rf android ios Square*.png StoreLogo.png icon.ico 64x64.png && cd ../.. && tauri icon packaging/tray-icon.svg -o build/tray-icons && cp build/tray-icons/64x64.png src-tauri/icons/tray.png",
+    "docker:dev": "docker compose -f compose.dev.yaml up --build --renew-anon-volumes -d",
+    "docker:dev:logs": "docker compose -f compose.dev.yaml logs -f",
+    "docker:dev:down": "docker compose -f compose.dev.yaml down --volumes",
+    "docker:prod": "docker compose -f compose.prod.yaml up --build -d",
+    "docker:prod:logs": "docker compose -f compose.prod.yaml logs -f",
+    "docker:prod:down": "docker compose -f compose.prod.yaml down",
+    "test": "node --test 'src/model/*.test.ts'",
+    "test:timezones": "for tz in UTC Europe/Amsterdam America/Havana Pacific/Auckland; do echo \"TZ=$tz\"; TZ=$tz node --test --test-reporter=dot 'src/model/*.test.ts' || exit 1; done"
+  },
+  "dependencies": {
+    "@fontsource/fredoka": "^5.3.0",
+    "@fontsource/nunito": "^5.3.0",
+    "@tauri-apps/api": "^2.12.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.12.4",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  }
+}

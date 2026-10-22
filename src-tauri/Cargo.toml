@@ -1,0 +1,47 @@
+[package]
+name = "desk-garden"
+# Keep in step with "version" in ../package.json (the bundle version is read from there).
+version = "1.1.0"
+description = "Finish today's tasks and grow a little desk plant."
+authors = ["Kian Wilbers"]
+license = ""
+repository = ""
+edition = "2024"
+rust-version = "1.90"
+
+[lib]
+name = "desk_garden_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.7.4", features = [] }
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tauri = { version = "2.12.5", features = ["tray-icon", "image-png"] }
+tauri-plugin-dialog = "2"
+
+# Reminders use macOS's UserNotifications framework directly: the Tauri notification plugin can't
+# schedule notifications on desktop or report which one was clicked.
+[target.'cfg(target_os = "macos")'.dependencies]
+block2 = "0.6"
+objc2 = "0.6"
+objc2-foundation = { version = "0.3", features = ["NSString", "NSBundle", "NSCalendar", "NSArray", "NSError"] }
+objc2-user-notifications = { version = "0.3", features = [
+  "block2",
+  "UNNotification",
+  "UNNotificationContent",
+  "UNNotificationRequest",
+  "UNNotificationResponse",
+  "UNNotificationSettings",
+  "UNNotificationSound",
+  "UNNotificationTrigger",
+  "UNUserNotificationCenter",
+] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true

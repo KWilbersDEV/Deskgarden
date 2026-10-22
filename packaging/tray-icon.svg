@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Menu bar icon (template image: macOS tints it for light and dark menu bars). -->
+  <path d="M32 58 V30" stroke="#000" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M32 34 C 30 20, 18 12, 6 14 C 6 27, 17 36, 32 34 Z" fill="#000"/>
+  <path d="M32 28 C 34 14, 46 6, 58 8 C 58 21, 47 30, 32 28 Z" fill="#000"/>
+</svg>

@@ -1,0 +1,18 @@
+# Production: the built static site served by nginx at http://localhost:8080
+#   start: docker compose -f compose.prod.yaml up --build -d
+#   stop:  docker compose -f compose.prod.yaml down
+# Nothing is mounted: the site is baked into the image, so changes need a rebuild (--build).
+name: desk-garden-prod
+
+services:
+  web:
+    build:
+      context: .
+      target: web
+    image: desk-garden:prod
+    ports:
+      - "127.0.0.1:${DESK_GARDEN_PROD_PORT:-8080}:8080"
+    read_only: true
+    tmpfs:
+      - /tmp
+    restart: unless-stopped

@@ -1,0 +1,44 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Desk Garden",
+  "version": "../package.json",
+  "identifier": "com.kianwilbers.deskgarden",
+  "build": {
+    "frontendDist": "../build/production",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build:prod"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Desk Garden",
+        "width": 1120,
+        "height": 820,
+        "minWidth": 380,
+        "minHeight": 560,
+        "center": true,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["app", "dmg"],
+    "category": "Productivity",
+    "copyright": "© 2026 Kian Wilbers",
+    "shortDescription": "Finish today's tasks and grow a little desk plant.",
+    "longDescription": "Desk Garden is a small daily task list. Every task you finish gives your desk plant a growth point, and it grows through five stages.",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.png"],
+    "macOS": {
+      "minimumSystemVersion": "13.0",
+      "signingIdentity": "-",
+      "hardenedRuntime": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# Development: Vite dev server with live reload at http://localhost:5174
+#   start: docker compose -f compose.dev.yaml up --build --renew-anon-volumes -d
+#   stop:  docker compose -f compose.dev.yaml down --volumes   (removes only the node_modules volume below)
+name: desk-garden-dev
+
+services:
+  web-dev:
+    build:
+      context: .
+      target: dev
+    image: desk-garden:dev
+    ports:
+      # Bound to this Mac only. Container and host use the same port, so live reload connects directly.
+      - "127.0.0.1:${DESK_GARDEN_DEV_PORT:-5174}:5174"
+    volumes:
+      # The project is mounted read-only: edits on the Mac show up immediately, and the container
+      # can't change your files.
+      - .:/app:ro
+      # The container keeps its own Linux node_modules (installed from package-lock.json) instead of
+      # the Mac's, which holds macOS-only binaries. --renew-anon-volumes refreshes it from the image
+      # on every start, so it always matches package-lock.json.
+      - /app/node_modules

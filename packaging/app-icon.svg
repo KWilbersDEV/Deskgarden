@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- Desk Garden app icon source. Regenerate the app icons with: npm run desktop:icons -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff7ea"/>
+      <stop offset="1" stop-color="#f6d6ab"/>
+    </linearGradient>
+    <linearGradient id="pot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d8774b"/>
+      <stop offset="1" stop-color="#bd5a31"/>
+    </linearGradient>
+    <pattern id="dots" width="46" height="46" patternUnits="userSpaceOnUse">
+      <circle cx="23" cy="23" r="4" fill="#efcc9f"/>
+    </pattern>
+    <filter id="tile-shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#5a3315" flood-opacity="0.3"/>
+    </filter>
+    <clipPath id="tile"><rect x="100" y="100" width="824" height="824" rx="185"/></clipPath>
+  </defs>
+
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)" filter="url(#tile-shadow)"/>
+  <g clip-path="url(#tile)">
+    <rect x="100" y="100" width="824" height="824" fill="url(#dots)" opacity="0.55"/>
+    <ellipse cx="512" cy="884" rx="230" ry="26" fill="#d9a877" opacity="0.55"/>
+  </g>
+
+  <!-- stem -->
+  <path d="M512 606 C 494 530, 530 450, 512 318" fill="none" stroke="#4b8a4c" stroke-width="24" stroke-linecap="round"/>
+
+  <!-- leaves -->
+  <g transform="rotate(-28 512 528)">
+    <ellipse cx="612" cy="528" rx="100" ry="45" fill="#5c9c5a"/>
+    <path d="M512 528 H668" stroke="#3f7a43" stroke-width="7" stroke-linecap="round" opacity="0.55"/>
+  </g>
+  <g transform="rotate(28 512 444)">
+    <ellipse cx="404" cy="444" rx="108" ry="48" fill="#5c9c5a"/>
+    <path d="M512 444 H348" stroke="#3f7a43" stroke-width="7" stroke-linecap="round" opacity="0.55"/>
+  </g>
+  <g transform="rotate(-28 512 372)">
+    <ellipse cx="586" cy="372" rx="74" ry="33" fill="#68a865"/>
+    <path d="M512 372 H628" stroke="#3f7a43" stroke-width="6" stroke-linecap="round" opacity="0.55"/>
+  </g>
+
+  <!-- flower -->
+  <g fill="#f08aa0">
+    <ellipse cx="512" cy="246" rx="36" ry="58"/>
+    <ellipse cx="512" cy="246" rx="36" ry="58" transform="rotate(72 512 304)"/>
+    <ellipse cx="512" cy="246" rx="36" ry="58" transform="rotate(144 512 304)"/>
+    <ellipse cx="512" cy="246" rx="36" ry="58" transform="rotate(216 512 304)"/>
+    <ellipse cx="512" cy="246" rx="36" ry="58" transform="rotate(288 512 304)"/>
+  </g>
+  <circle cx="512" cy="304" r="32" fill="#f4c24f"/>
+
+  <!-- pot -->
+  <path d="M350 640 H674 L640 842 Q636 868 610 868 H414 Q388 868 384 842 Z" fill="url(#pot)"/>
+  <rect x="318" y="592" width="388" height="66" rx="22" fill="#b65a34"/>
+  <ellipse cx="512" cy="602" rx="166" ry="13" fill="#6b4430"/>
+  <circle cx="452" cy="748" r="12" fill="#f7c7a4" opacity="0.8"/>
+  <circle cx="512" cy="766" r="12" fill="#f7c7a4" opacity="0.8"/>
+  <circle cx="572" cy="748" r="12" fill="#f7c7a4" opacity="0.8"/>
+</svg>

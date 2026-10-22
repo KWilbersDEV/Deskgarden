@@ -1,0 +1,11 @@
+node_modules
+build
+dist
+# Local overrides may hold machine-specific values; keep them out of version control.
+.env*.local
+
+# Desktop installers (npm run desktop:release)
+release
+
+# macOS Finder metadata
+.DS_Store
