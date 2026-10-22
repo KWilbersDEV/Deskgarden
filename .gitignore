@@ -9,3 +9,6 @@ release
 
 # macOS Finder metadata
 .DS_Store
+
+# Full development guide, kept locally only
+README.dev.md
